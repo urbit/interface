@@ -19,10 +19,10 @@ class SideTab extends Component {
           style={{
             flexGrow:1,
         }}>
-          <p className="pointer" onClick={this.props.postSubmit}>
+          <p className="pointer mb2" onClick={this.props.postSubmit}>
             -> Post
           </p>
-          <p className="pointer" onClick={this.props.discardPost}>
+          <p className="pointer red" onClick={this.props.discardPost}>
             Discard note
           </p>
         </div>
