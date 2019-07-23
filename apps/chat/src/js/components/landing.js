@@ -27,9 +27,11 @@ export class LandingScreen extends Component {
   }
 
   onClickSubscribe() {
+    const { props } = this;
+
     let station = props.match.params.ship + '/' + props.match.params.station;
-    this.props.api.source(station, true);
-    this.props.history.push('/~chat');
+    props.api.source(station, true);
+    props.history.push('/~chat');
   }
 
   render() {
@@ -50,7 +52,7 @@ export class LandingScreen extends Component {
         <br />
         <button
           onClick={this.onClickSubscribe.bind(this)}
-          className="label-r"
+          className="label-regular"
         >Subscribe</button>
         </div>
       </div>
