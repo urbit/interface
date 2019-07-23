@@ -58,7 +58,7 @@ export class Message extends Component {
     if (typeof url !== 'string') { throw 'Only transmogrify strings!'; }
     const ship = window.ship;
     if (url.indexOf('arvo://') === 0) {
-      return `http://${ship}.arvo.network` + url.split('arvo://')[1];
+      return url.split('arvo://')[1];
     }
     return url;
   }
