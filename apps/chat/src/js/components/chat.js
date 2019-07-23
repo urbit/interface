@@ -191,11 +191,22 @@ export class ChatScreen extends Component {
         .slice(messages.length - (50 * state.numPages), messages.length);
     }
 
-    let chatMessages = messages.reverse().map((msg) => {
+    let reversedMessages = messages.reverse();
+    let chatMessages = reversedMessages.map((msg, i) => {
+      // Render sigil if previous message is not by the same sender
+      let renderSigil = _.get(reversedMessages[i + 1], ['gam', 'aut']) !== _.get(msg, ['gam', 'aut']);
+
+      // More padding top if previous message is not by the same sender
+      let paddingTop = renderSigil;
+      // More padding bot if next message is not by the same sender
+      let paddingBot = _.get(reversedMessages[i - 1], ['gam', 'aut']) !== _.get(msg, ['gam', 'aut']);
       return (
         <Message
           key={msg.gam.uid}
-          msg={msg.gam} />
+          msg={msg.gam}
+          renderSigil={renderSigil}
+          paddingTop={paddingTop}
+          paddingBot={paddingBot} />
       );
     });
     let peers = props.peers[state.station] || [window.ship];
