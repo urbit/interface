@@ -30,6 +30,7 @@ export class LandingScreen extends Component {
     const { props } = this;
 
     let station = props.match.params.ship + '/' + props.match.params.station;
+    console.log('sourcing', station);
     props.api.source(station, true);
     props.history.push('/~chat');
   }
@@ -52,7 +53,7 @@ export class LandingScreen extends Component {
         <br />
         <button
           onClick={this.onClickSubscribe.bind(this)}
-          className="label-regular"
+          className="label-regular fw-bold pointer"
         >Subscribe</button>
         </div>
       </div>
